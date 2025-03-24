@@ -231,6 +231,18 @@ YG_VALUE_PROPERTY(maxWidth, MaxWidth)
 YG_VALUE_PROPERTY(maxHeight, MaxHeight)
 YG_PROPERTY(CGFloat, aspectRatio, AspectRatio)
 
+- (void)setGap:(YGValue)gap forGutter:(YGGutter)gutter {
+  if (gap.unit == YGUnitPercent) {
+    YGNodeStyleSetGapPercent(self.node, gutter, gap.value);
+  } else {
+    YGNodeStyleSetGap(self.node, gutter, gap.value);
+  }
+}
+
+- (YGValue)gapForGutter:(YGGutter)gutter {
+  return YGNodeStyleGetGap(self.node, gutter);
+}
+
 @end
 
 @implementation YGLayout

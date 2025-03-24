@@ -189,6 +189,9 @@ typedef NS_OPTIONS(NSInteger, YGDimensionFlexibility) {
 // Yoga specific properties, not compatible with flexbox specification
 @property(nonatomic) CGFloat aspectRatio;
 
+- (void)setGap:(YGValue)gap forGutter:(YGGutter)gutter;
+- (YGValue)gapForGutter:(YGGutter)gutter;
+
 @end
 
 #pragma mark -
