@@ -24,14 +24,16 @@ extension Double {
     }
 }
 
-extension YGValue: ExpressibleByIntegerLiteral {
+extension YGValue: @unchecked @retroactive Sendable {}
+
+extension YGValue: @retroactive ExpressibleByIntegerLiteral {
 
     @inlinable public init(integerLiteral value: Int) {
         self = YGValue(value: Double(value), unit: .point)
     }
 }
 
-extension YGValue: ExpressibleByFloatLiteral {
+extension YGValue: @retroactive ExpressibleByFloatLiteral {
 
     @inlinable public init(floatLiteral value: Double) {
         self = YGValue(value: value, unit: .point)
@@ -51,11 +53,11 @@ extension YGValue {
 
 extension YGValue {
     
-    public static var zero = YGValue(value: 0, unit: .point)
+    public static let zero = YGValue(value: 0, unit: .point)
 
-    public static var auto = YGValue(value: Double.nan, unit: .auto)
+    public static let auto = YGValue(value: Double.nan, unit: .auto)
 
-    public static var undefined = YGValue(value: Double.nan, unit: .undefined)
+    public static let undefined = YGValue(value: Double.nan, unit: .undefined)
 }
 
 extension YGValue {
